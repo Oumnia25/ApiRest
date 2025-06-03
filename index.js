@@ -1,13 +1,12 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 const express = require('express');
-const nodemon = require('nodemon');
 const { conectDB } = require('./src/config/db');
-const app = express();
 const AutorRouter = require('./src/api/routes/autor.js');
 const bookRouter = require('./src/api/routes/book.js');
 
 conectDB();
 
+const app = express();
 app.use(express.json());
 app.use("/api/v1/autores", AutorRouter);
 app.use("/api/v1/books", bookRouter);

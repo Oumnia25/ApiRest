@@ -139,6 +139,6 @@ const libros = [
     "año": "2024",
     "editorial": "Contraluz"
   }
-]
+];
 
 module.exports = libros;

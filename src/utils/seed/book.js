@@ -13,12 +13,12 @@ const lanzarsemilla = async (req, res, next) => {
 
     await Book.insertMany(libros);
     console.log("Libros insertados");
-
-    await mongoose.connection.close();
-    console.log("Conexión cerrada");
-  
 } catch (error) {
   console.log(error);
-}}
+} finally {
+  await mongoose.connection.close();
+    console.log("Conexión cerrada");
+}
+};
 
 lanzarsemilla();

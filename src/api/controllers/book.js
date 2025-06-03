@@ -1,4 +1,4 @@
-
+const mongoose = require('mongoose'); 
 const Book = require('../models/book.js');
 
 const getBooks = async (req, res, next) => {
@@ -6,9 +6,9 @@ try {
   const allBooks = await Book.find().populate('autor');
   return res.status(200).json(allBooks);
 } catch (error) {
-  return res.status(404).json(("Error algo va mal", error.message));
+  return res.status(500).json({ mensaje: "Error algo va mal", error: error.message });
 }
-}
+};
 
 const getBookById = async (req, res, next) => {
   try {
@@ -17,8 +17,9 @@ const getBookById = async (req, res, next) => {
     return res.status(200).json(book);
    }
     catch (error) {
-      return res.status(404).json("Error algo va mal");
-    }}
+      return res.status(500).json({ mensaje: "Error algo va mal", error: error.message });
+    }
+  };
 
 
     const createBook = async (req, res, next) => {
@@ -27,7 +28,7 @@ const getBookById = async (req, res, next) => {
         const newBook = await Book.create({ titulo, autor, genero, año, editorial });
         return res.status(200).json(newBook);
       } catch (error) {
-        return res.status(404).json("Error algo va mal");
+        return res.status(500).json({ mensaje: "Error algo va mal", error: error.message });
       }
     };
 
@@ -38,7 +39,7 @@ const getBookById = async (req, res, next) => {
         const updatedBook = await Book.findByIdAndUpdate(id, { titulo, autor, genero, año, editorial }, { new: true });
         return res.status(200).json(updatedBook);
       } catch (error) {
-        return res.status(404).json("Error algo va mal");
+        return res.status(500).json({ mensaje: "Error algo va mal", error: error.message });
       }
     };
    
@@ -49,8 +50,9 @@ const getBookById = async (req, res, next) => {
         const deletedBook = await Book.findByIdAndDelete(id);
         return res.status(200).json(deletedBook); }
       catch (error) {
-        return res.status(404).json("Error algo va mal");
-      }}
+        return res.status(500).json({ mensaje: "Error algo va mal", error: error.message });
+      }
+    };
 
 
 
