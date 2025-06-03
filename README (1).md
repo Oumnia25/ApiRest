@@ -14,7 +14,7 @@ Este proyecto consiste en una API REST desarrollada con Node.js, Express y Mongo
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/Oumnia25/backend-autores-libros.git
+   git clone https://github.com/Oumnia25/ApiRest.git
    ```
 
 2. Instala las dependencias:
